@@ -1,0 +1,2149 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Blog Content Styles */
+.blog-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.blog-content p {
+  color: #334155;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.blog-content a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.blog-content a:hover {
+  color: #1d4ed8;
+}
+
+@media (min-width: 768px) {
+  .blog-content h2 {
+    font-size: 2.25rem;
+  }
+}
+
+/* ============================================
+   MOBİL OKUNABİLİRLİK OPTİMİZASYONU
+   Google Mobile-First Indexing ve AI Crawler
+   için satır satır okunabilirlik garantisi
+   ============================================ */
+
+/* Mobil cihazlar için temel ayarlar (max-width: 767px) */
+@media (max-width: 767px) {
+  /* Tüm paragraflar için optimal okunabilirlik */
+  p,
+  .blog-content p,
+  article p,
+  section p,
+  div p,
+  main p {
+    /* Paragraf genişliği: 65-70 karakter (ch) */
+    max-width: 70ch;
+    /* Satır yüksekliği: minimum 1.6 (okunabilirlik için) */
+    line-height: 1.6;
+    /* Paragrafların bölünmemesi için */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* Hyphenation mobilde daha iyi okunabilirlik için */
+    hyphens: auto;
+    /* Metin hizalaması: sol (doğal okuma akışı) */
+    text-align: left;
+    /* Paragraflar arası boşluk */
+    margin-bottom: 1rem;
+  }
+
+  /* Başlıklar için okunabilirlik */
+  h1, h2, h3, h4, h5, h6,
+  .blog-content h2,
+  article h1, article h2, article h3,
+  section h1, section h2, section h3 {
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Liste öğeleri için okunabilirlik */
+  li,
+  ul li,
+  ol li {
+    line-height: 1.6;
+    max-width: 70ch;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Metin içeren tüm container'lar */
+  article,
+  section,
+  main,
+  .blog-content,
+  [class*="content"],
+  [class*="text"] {
+    /* Container genişliği kontrolü */
+    max-width: 100%;
+    /* İçerik genişliği sınırlaması */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Font stabilitesi - Layout shift önleme */
+  body,
+  p,
+  span,
+  div,
+  article,
+  section {
+    /* Font loading sırasında layout shift önleme */
+    font-display: swap;
+    /* Text rendering optimizasyonu */
+    text-rendering: optimizeLegibility;
+    /* Font smoothing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Görsel ve metin ilişkisi - DOM sırası korunur */
+  img,
+  picture,
+  video,
+  iframe {
+    /* Görsellerin metinleri itmemesi için */
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Flex ve Grid container'lar - DOM sırası korunur */
+  [class*="flex"],
+  [class*="grid"] {
+    /* CSS order ile sıra değişikliği yapılmamalı */
+    /* Mobilde normal akış korunur */
+  }
+
+  /* Tablo içeriği için okunabilirlik */
+  table,
+  td,
+  th {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+  }
+
+  /* Form elemanları için okunabilirlik */
+  input,
+  textarea,
+  select,
+  label {
+    line-height: 1.6;
+    font-size: 16px; /* iOS zoom önleme */
+  }
+
+  /* Link'ler için okunabilirlik */
+  a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+  }
+
+  /* Blockquote için okunabilirlik */
+  blockquote {
+    max-width: 70ch;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Code blokları için okunabilirlik */
+  code,
+  pre {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+}
+
+/* Tablet ve küçük ekranlar için (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  p,
+  .blog-content p,
+  article p,
+  section p {
+    max-width: 75ch;
+    line-height: 1.65;
+  }
+}
+
+/* Mobil cihazlarda container padding optimizasyonu */
+@media (max-width: 767px) {
+  /* Container'ların kenar boşlukları */
+  .container,
+  [class*="container"],
+  main,
+  article,
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Metin içeriği için optimal padding */
+  [class*="content"],
+  [class*="text"],
+  .blog-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Font yükleme optimizasyonu - CLS önleme */
+@font-face {
+  font-family: 'Geist Sans';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-display: swap;
+}
+
+/* Mobilde görsel yükleme - LCP koruması */
+@media (max-width: 767px) {
+  img[loading="lazy"] {
+    /* Lazy loading görselleri layout shift yaratmamalı */
+    aspect-ratio: attr(width) / attr(height);
+  }
+
+  /* Hero görselleri için öncelik */
+  img[priority],
+  img[data-priority="true"] {
+    /* Priority görseller hemen yüklenir */
+    loading: eager;
+  }
+}
+
+/* ============================================
+   MOBİL LAYOUT HATA DÜZELTMELERİ
+   Tüm sayfalarda mobil görünüm sorunlarını çözer
+   HTML, SEO, schema yapısına dokunmadan sadece CSS ile
+   ============================================ */
+
+/* Root-level yatay scroll engelleme */
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative;
+  }
+
+  /* Tüm elemanlar için genişlik kontrolü */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Görsel, video, iframe taşma önleme */
+  img,
+  video,
+  iframe,
+  embed,
+  object,
+  picture,
+  source,
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+
+  /* Next.js Image component wrapper için */
+  span[style*="position"],
+  div[style*="position"] {
+    max-width: 100% !important;
+  }
+
+  /* Container genişlik sorunları - tüm max-w değerleri */
+  .container,
+  [class*="container"],
+  [class*="max-w"],
+  main,
+  article,
+  section,
+  div[class*="mx-auto"],
+  div[class*="max-w-7xl"],
+  div[class*="max-w-6xl"],
+  div[class*="max-w-5xl"],
+  div[class*="max-w-4xl"],
+  div[class*="max-w-3xl"],
+  div[class*="max-w-2xl"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Grid ve Flex taşma önleme */
+  [class*="grid"],
+  [class*="flex"] {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Grid item'lar için min-width sıfırlama */
+  [class*="grid"] > *,
+  [class*="flex"] > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Flex wrap zorunlu (nowrap hariç) */
+  [class*="flex"]:not([class*="nowrap"]):not([class*="flex-nowrap"]) {
+    flex-wrap: wrap !important;
+  }
+
+  /* Uzun metin taşma önleme */
+  p,
+  span,
+  div,
+  a,
+  li,
+  td,
+  th,
+  label,
+  input,
+  textarea,
+  select,
+  button,
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    hyphens: auto;
+    max-width: 100% !important;
+  }
+
+  /* URL ve telefon numaraları için özel kırılma */
+  a[href^="tel:"],
+  a[href^="mailto:"],
+  a[href^="http"],
+  code,
+  pre {
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Fixed ve absolute elemanlar için mobil düzeltmeler */
+  [class*="fixed"],
+  [class*="absolute"] {
+    max-width: 100vw !important;
+  }
+
+  /* Header offset düzeltmesi */
+  main.pt-20,
+  main[class*="pt-20"],
+  main[class*="pt-"],
+  section[class*="pt-"] {
+    padding-top: 5rem !important;
+  }
+
+  /* Hero section yükseklik sorunları */
+  [class*="min-h-"],
+  [class*="h-screen"],
+  [class*="h-full"] {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* Card ve box taşma önleme */
+  [class*="card"],
+  [class*="box"],
+  [class*="rounded"],
+  div[class*="bg-"],
+  section[class*="bg-"] {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Table responsive - mobilde block yap */
+  table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table thead,
+  table tbody,
+  table tr {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  table td,
+  table th {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0.5rem !important;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  table thead {
+    display: none !important;
+  }
+
+  /* Form elemanları taşma önleme */
+  form,
+  [class*="form"],
+  input,
+  textarea,
+  select,
+  button {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Padding ve margin overflow önleme */
+  [class*="px-"],
+  [class*="py-"],
+  [class*="p-"],
+  [class*="m-"],
+  [class*="mx-"],
+  [class*="my-"] {
+    box-sizing: border-box !important;
+  }
+
+  /* Z-index çakışma önleme */
+  header,
+  nav,
+  [class*="header"],
+  [class*="nav"] {
+    z-index: 50;
+    position: relative;
+  }
+
+  /* Mobil header layout düzeltmeleri */
+  header {
+    min-height: 80px !important;
+    height: auto !important;
+  }
+
+  header nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    display: block !important; /* Kesinlikle görünür */
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  header nav > div {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-height: 80px !important;
+    height: 80px !important;
+    position: relative !important;
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+  }
+
+  /* Logo mobilde düzgün hizalanması */
+  header nav a[href="/"] {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    max-width: calc(100% - 60px) !important;
+    z-index: 100 !important; /* Menü butonundan altta */
+    position: relative !important;
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+  }
+
+  header nav a[href="/"] img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important; /* Kesinlikle görünür */
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+  }
+
+  /* Hamburger menü butonu mobilde düzgün hizalanması */
+  header nav button[aria-label="Toggle menu"] {
+    position: relative !important;
+    flex-shrink: 0 !important;
+    margin-left: 0.5rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    z-index: 60 !important; /* Menü açıkken de görünür */
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+  }
+
+  /* ============================================
+     MOBİL MENÜ PROFESYONEL DÜZELTME
+     Tek seferlik master düzeltme
+     ============================================ */
+
+  /* Mobil menü container - fixed overlay - EN YÜKSEK Z-INDEX */
+  .mobile-menu-container {
+    position: fixed !important;
+    top: 80px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: calc(100vh - 80px) !important;
+    max-height: calc(100vh - 80px) !important;
+    z-index: 9999 !important; /* EN YÜKSEK - her şeyin üstünde */
+    background: white !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  /* Mobil menü backdrop - menü altında ama içerik üstünde */
+  .mobile-menu-container + div[class*="backdrop"],
+  div[class*="backdrop"][style*="zIndex"] {
+    z-index: 9998 !important;
+  }
+
+  /* Mobilde hero, main, section z-index override - MENÜ ALTINDA KALSIN */
+  main,
+  section:not(.mobile-menu-container),
+  [class*="hero"]:not(.mobile-menu-container),
+  [class*="Hero"]:not(.mobile-menu-container),
+  header + main,
+  header + section:not(.mobile-menu-container) {
+    position: relative !important;
+    z-index: 1 !important; /* Menü altında kal */
+  }
+
+  /* Stacking context oluşturan özellikleri mobilde devre dışı bırak */
+  main[style*="transform"],
+  section[style*="transform"]:not(.mobile-menu-container),
+  main[style*="filter"],
+  section[style*="filter"]:not(.mobile-menu-container) {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* ============================================
+     MOBİL LAYOUT KÖKTEN STABİLİZASYON
+     Hero + Form + Header + Menü Overlay - Tek seferlik master düzeltme
+     ============================================ */
+
+  /* A) HEADER (MOBİL) - SABİT VE STABİL */
+  header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100 !important; /* İçerikten yüksek ama menü overlay'den düşük */
+    min-height: 80px !important;
+    height: 80px !important;
+    background: white !important;
+    display: block !important; /* Kesinlikle görünür */
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+  }
+
+  header nav > div {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-height: 80px !important;
+    height: 80px !important;
+    position: relative !important; /* Absolute/fixed değil */
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+  }
+
+  /* Desktop menü mobilde kesinlikle gizli */
+  header nav > div > div[class*="hidden"][class*="sm:flex"] {
+    display: none !important; /* Mobilde kesinlikle gizli */
+  }
+
+  header nav button[aria-label="Toggle menu"] {
+    position: relative !important; /* Absolute/fixed KULLANMA */
+    flex-shrink: 0 !important;
+    z-index: 101 !important; /* Header içinde en üstte */
+    display: inline-flex !important; /* Kesinlikle görünür - sm:hidden override edilmeli */
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    margin-left: 0.5rem !important;
+    background: transparent !important; /* Arka plan şeffaf */
+    border: none !important; /* Border yok */
+    cursor: pointer !important; /* Pointer cursor */
+    color: rgb(30, 41, 59) !important; /* slate-800 - buton rengi */
+  }
+
+  /* Menü butonu içindeki SVG ikonu - mobilde kesinlikle görünür */
+  header nav button[aria-label="Toggle menu"] svg {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 24px !important;
+    height: 24px !important;
+    color: rgb(30, 41, 59) !important; /* slate-800 - SVG rengi */
+    stroke: rgb(30, 41, 59) !important; /* slate-800 - stroke rengi */
+    fill: none !important; /* Fill yok */
+  }
+
+  /* Menü butonu hover durumu - mobilde de görünür */
+  header nav button[aria-label="Toggle menu"]:hover {
+    background: rgb(241, 245, 249) !important; /* slate-100 */
+    color: rgb(2, 6, 23) !important; /* slate-950 */
+  }
+
+  header nav button[aria-label="Toggle menu"]:hover svg {
+    color: rgb(2, 6, 23) !important; /* slate-950 */
+    stroke: rgb(2, 6, 23) !important; /* slate-950 */
+  }
+
+  /* B) MOBİL MENÜ / OVERLAY (EN ÜST KATMAN) */
+  .mobile-menu-container {
+    position: fixed !important;
+    inset: 0 !important;
+    top: 80px !important; /* Header yüksekliği */
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: calc(100vh - 80px) !important;
+    max-height: calc(100vh - 80px) !important;
+    z-index: 9999 !important; /* EN YÜKSEK - her şeyin üstünde */
+    background: white !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .mobile-menu-container > div {
+    height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Mobil menü backdrop */
+  div[style*="zIndex"][style*="9998"],
+  div[class*="backdrop"][style*="zIndex"] {
+    position: fixed !important;
+    inset: 0 !important;
+    top: 80px !important;
+    z-index: 9998 !important;
+  }
+
+  /* C) HERO (ANA SAYFA) - FLOW-SAFE, KESİLMESİN */
+  main.pt-20 > section:first-child[style*="background-image"],
+  main.pt-20 > section:first-child[class*="bg-cover"] {
+    position: relative !important;
+    overflow: visible !important; /* overflow:hidden KULLANMA - hero kesilmesin */
+    overflow-x: hidden !important; /* Sadece yatay scroll engelle */
+    overflow-y: visible !important; /* Dikey scroll serbest */
+    transform: none !important;
+    translate: none !important;
+    will-change: auto !important;
+    backface-visibility: visible !important;
+    height: auto !important;
+    min-height: auto !important; /* Mobilde esnek - içerik kesilmesin */
+    max-height: none !important; /* max-height kaldırıldı - hero kesilmesin */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 80px !important; /* Header yüksekliği */
+    padding-bottom: 1rem !important; /* Hero ile form arası spacing (gap ile birlikte) */
+    z-index: 1 !important; /* Menü overlay altında */
+  }
+
+  /* Hero background/blur katmanı - arka planda */
+  main.pt-20 > section:first-child[style*="background-image"]::before,
+  main.pt-20 > section:first-child[class*="bg-cover"]::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    background-image: inherit !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Hero content/card katmanı - ön planda, içerik tam görünür, kesilmesin */
+  main.pt-20 > section:first-child[style*="background-image"] > div,
+  main.pt-20 > section:first-child[class*="bg-cover"] > div {
+    position: relative !important;
+    transform: none !important;
+    translate: none !important;
+    z-index: 1 !important; /* İçerik ön planda */
+    overflow: visible !important; /* Hero içeriği kesilmesin */
+    max-height: none !important; /* max-height kaldırıldı */
+    pointer-events: auto !important;
+    align-items: flex-start !important; /* Mobilde üstten başla */
+    padding-top: 1.5rem !important;
+    padding-bottom: 1rem !important; /* Hero ile form arası spacing (gap ile birlikte) */
+    padding-left: 1rem !important; /* Mobil padding */
+    padding-right: 1rem !important; /* Mobil padding */
+    min-height: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* D) HERO CARD (MOBİL BOYUT DENGESİ) */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="rounded-2xl"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="rounded-2xl"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 1rem !important; /* Mobil uyumlu padding */
+    box-sizing: border-box !important;
+  }
+
+  /* Hero card içindeki metinler - taşma yok */
+  main.pt-20 > section:first-child[style*="background-image"] h1,
+  main.pt-20 > section:first-child[class*="bg-cover"] h1,
+  main.pt-20 > section:first-child[style*="background-image"] p,
+  main.pt-20 > section:first-child[class*="bg-cover"] p,
+  main.pt-20 > section:first-child[style*="background-image"] li,
+  main.pt-20 > section:first-child[class*="bg-cover"] li {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    font-size: clamp(0.875rem, 2vw, 1rem) !important; /* Mobil uyumlu */
+    line-height: 1.6 !important;
+  }
+
+  /* E) FORM SECTION (ÖN BİLGİLENDİRME) - HERODAN SONRA DÜZGÜN */
+  main.pt-20 > section:first-child[style*="background-image"] + section,
+  main.pt-20 > section:first-child[class*="bg-cover"] + section,
+  main.pt-20 > section:first-child[style*="background-image"] ~ section {
+    position: relative !important; /* Absolute/fixed/translate KULLANMA */
+    z-index: 1 !important; /* Menü overlay altında */
+    margin-top: 0 !important;
+    padding-top: 2rem !important; /* Hero ile form arası spacing */
+    transform: none !important;
+    translate: none !important;
+    overflow: visible !important;
+  }
+
+  /* Form container - normal flow */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="rounded-2xl"][class*="bg-white"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="rounded-2xl"][class*="bg-white"] {
+    position: relative !important; /* Absolute/fixed KULLANMA */
+    margin-top: 0 !important; /* Gap ile spacing sağlanıyor, margin-top kaldırıldı */
+    transform: none !important;
+    translate: none !important;
+    z-index: 1 !important; /* Hero card'dan altta (hero z-index: 2) */
+  }
+
+  /* ============================================
+     MOBİL HERO LAYOUT ORDER DÜZELTME
+     H1 ve açıklama formdan ÖNCE görünmeli
+     ============================================ */
+
+  /* Hero içindeki grid - mobilde flex, ardışık stack, HERO -> FORM */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid-cols-1"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid-cols-1"] {
+    display: flex !important; /* Grid yerine flex - sıralama garantisi */
+    flex-direction: column !important; /* HERO (row 1) -> FORM (row 2) */
+    gap: 1.5rem !important; /* Hero ile form arası spacing (1.5rem = 24px) */
+    width: 100% !important;
+    align-items: stretch !important; /* Tüm genişlik kullan */
+    grid-template-columns: none !important; /* Grid sütunlarını kaldır */
+    grid-template-rows: none !important; /* Grid satırlarını kaldır */
+  }
+
+  /* H1 ve açıklama kartı - mobilde ÖNCE, order: 1 ZORLA, TAM görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child,
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div[class*="lg:col-span-6"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div[class*="lg:col-span-6"] {
+    order: 1 !important; /* İLK SIRADA - ZORLA */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+    position: relative !important; /* z-index için relative gerekli */
+    z-index: 2 !important; /* Form container'dan üstte */
+    visibility: visible !important; /* Görünür */
+    opacity: 1 !important; /* Tam opak */
+    display: block !important; /* Block olarak görünür */
+    max-height: none !important; /* max-height kaldırıldı - hero kesilmesin */
+    overflow: visible !important; /* Hero kesilmesin */
+    height: auto !important; /* Esnek yükseklik */
+  }
+
+  /* H1 kartı içeriği - kesinlikle görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child [class*="rounded-2xl"][class*="bg-black"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child [class*="rounded-2xl"][class*="bg-black"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div[class*="lg:col-span-6"] [class*="rounded-2xl"][class*="bg-black"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div[class*="lg:col-span-6"] [class*="rounded-2xl"][class*="bg-black"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 2 !important; /* Form container'dan üstte */
+  }
+
+  /* H1 başlık - kesinlikle görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child h1,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child h1,
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div[class*="lg:col-span-6"] h1,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div[class*="lg:col-span-6"] h1 {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  /* Açıklama paragrafı - kesinlikle görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child p,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child p,
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div[class*="lg:col-span-6"] p,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div[class*="lg:col-span-6"] p {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    position: relative !important;
+  }
+
+  /* H1 kartı içeriği - TAM görünür, kesilmesin, son güncelleme dahil */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child [class*="rounded-2xl"][class*="bg-black"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child [class*="rounded-2xl"][class*="bg-black"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child [class*="max-w-"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child [class*="max-w-"] {
+    width: 100% !important;
+    max-width: 100% !important; /* max-width: 560px kaldırıldı */
+    overflow: visible !important; /* Hero kartı kesilmesin */
+    max-height: none !important; /* max-height kaldırıldı */
+    height: auto !important; /* Esnek yükseklik */
+    padding: 1.25rem !important; /* Mobil uyumlu padding */
+    padding-bottom: 1.5rem !important; /* Alt padding - son güncelleme için */
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* H1 başlık - mobilde tam görünür */
+  main.pt-20 > section:first-child[style*="background-image"] h1,
+  main.pt-20 > section:first-child[class*="bg-cover"] h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important; /* Mobil uyumlu */
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  /* H1 altı açıklama paragrafı - mobilde tam görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child p,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child p {
+    font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+    line-height: 1.6 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    display: block !important; /* Kesinlikle görünür */
+    color: rgb(255, 255, 255) !important; /* Mobilde beyaz renk (text-white/90 yerine) */
+  }
+
+  /* Hero içindeki liste (ul) - mobilde tam görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child ul,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child ul {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  /* Hero içindeki liste item'ları - mobilde tam görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child ul li,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child ul li {
+    font-size: clamp(0.8125rem, 2vw, 0.9375rem) !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    display: flex !important;
+    align-items: flex-start !important; /* Madde noktası ve metin üstten hizalı */
+    gap: 0.75rem !important;
+  }
+
+  /* Hero içindeki liste item'larındaki madde noktası - mobilde düzgün hizalı */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child ul li span[class*="mt-2"][class*="h-1.5"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child ul li span[class*="mt-2"][class*="h-1.5"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child ul li span[class*="rounded-full"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child ul li span[class*="rounded-full"] {
+    margin-top: 0.375rem !important; /* mt-2 yerine daha küçük margin (6px) - metinle hizalı */
+    flex-shrink: 0 !important; /* Madde noktası küçülmesin */
+    align-self: flex-start !important; /* Üstten hizalı */
+    display: block !important;
+  }
+
+  /* Hero içindeki liste item'larındaki metin span - mobilde düzgün hizalı */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child ul li > span:not([class*="mt-2"]):not([class*="h-1.5"]),
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child ul li > span:not([class*="mt-2"]):not([class*="h-1.5"]) {
+    flex: 1 !important; /* Kalan alanı kapla */
+    min-width: 0 !important; /* Text overflow için */
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  /* Son güncelleme tarihi - hero kartın EN ALTINDA, kesinlikle görünür */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child time,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child time,
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child [class*="text-xs"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child [class*="text-xs"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:first-child div[class*="mt-6"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:first-child div[class*="mt-6"] {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem) !important;
+    line-height: 1.5 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+    position: relative !important; /* Overlay altında kalmamalı */
+    z-index: 1 !important; /* Ön planda */
+  }
+
+  /* Form kartı - mobilde SONRA, order: 2 ZORLA, hero'dan SONRA başlasın */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:last-child,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:last-child,
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div[class*="lg:col-span-5"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div[class*="lg:col-span-5"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div[class*="lg:col-start-8"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div[class*="lg:col-start-8"] {
+    order: 2 !important; /* İKİNCİ SIRADA - ZORLA (hero'dan SONRA) */
+    position: relative !important; /* z-index için relative gerekli */
+    z-index: 1 !important; /* Hero card'dan altta (hero z-index: 2) */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 0 !important; /* Gap ile spacing sağlanıyor */
+    margin-bottom: 0 !important;
+    transform: none !important; /* Transform yok */
+    translate: none !important; /* Translate yok */
+    visibility: visible !important; /* Görünür */
+    opacity: 1 !important; /* Tam opak */
+    display: block !important; /* Block olarak görünür */
+  }
+
+  /* Tüm grid item'lar - mobilde order ve visibility zorunlu, kesilmesin */
+  /* NOT: Form container ve hero card için position: relative gerekli (z-index için) */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div,
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div {
+    position: relative !important; /* z-index için relative gerekli */
+    transform: none !important;
+    translate: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important; /* max-height kaldırıldı */
+    overflow: visible !important; /* Kesilmesin */
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+
+  /* Form kartı içeriği - H1'i kesmez, max-width kaldırıldı */
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:last-child [class*="rounded-2xl"][class*="bg-white"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:last-child [class*="rounded-2xl"][class*="bg-white"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:last-child [class*="max-w-"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:last-child [class*="max-w-"],
+  main.pt-20 > section:first-child[style*="background-image"] [class*="grid"] > div:last-child [class*="max-w-\[420px\]"],
+  main.pt-20 > section:first-child[class*="bg-cover"] [class*="grid"] > div:last-child [class*="max-w-\[420px\]"] {
+    width: 100% !important;
+    max-width: 100% !important; /* max-width: 420px kaldırıldı */
+    overflow: visible !important;
+    padding: 1.25rem !important; /* Mobil uyumlu padding */
+    margin: 0 !important;
+    margin-top: 1.5rem !important; /* Mobilde form container'ın üstünde boşluk */
+    position: relative !important; /* Absolute/fixed değil */
+    z-index: 1 !important; /* Hero card'dan altta (hero z-index: 2) */
+    box-sizing: border-box !important;
+    visibility: visible !important; /* Kesinlikle görünür */
+    opacity: 1 !important; /* Tam opak */
+    display: block !important; /* Block olarak görünür */
+  }
+
+  /* Giriş ekranı boşluğu kaldır - mobilde */
+  main.pt-20 {
+    padding-top: 0 !important; /* Mobilde boşluk yok */
+  }
+
+  /* Stacking context kaynaklı z-index/transform/filter override */
+  main.pt-20 > section:first-child[style*="background-image"] *,
+  main.pt-20 > section:first-child[class*="bg-cover"] * {
+    transform: none !important;
+    translate: none !important;
+    filter: none !important; /* Mobilde filter devre dışı */
+    will-change: auto !important;
+    isolation: auto !important;
+  }
+
+  /* Menü açıkken - hero ve form menü altında kal */
+  body[style*="overflow: hidden"] main.pt-20 > section,
+  html[style*="overflow: hidden"] main.pt-20 > section {
+    z-index: 1 !important; /* Menü overlay altında */
+    position: relative !important;
+    transform: none !important;
+    translate: none !important;
+  }
+
+  /* Mobilde transform/filter gibi stacking context oluşturan özellikleri devre dışı bırak */
+  main[style*="transform"],
+  section[style*="transform"],
+  [class*="hero"][style*="transform"],
+  main[style*="filter"],
+  section[style*="filter"],
+  [class*="hero"][style*="filter"] {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* Mobilde fixed/absolute elementler menü altında */
+  main [style*="position: fixed"],
+  section [style*="position: fixed"],
+  main [style*="position: absolute"],
+  section [style*="position: absolute"] {
+    z-index: 1 !important; /* Menü altında */
+  }
+
+  /* Body scroll kilidi açıkken hero'nun sabit kalması */
+  body[style*="overflow: hidden"] main,
+  body[style*="overflow: hidden"] section,
+  html[style*="overflow: hidden"] main,
+  html[style*="overflow: hidden"] section {
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  /* Mobil menü içeriği - scrollable */
+  .mobile-menu-container > div {
+    height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(148, 163, 184, 0.5) transparent !important;
+  }
+
+  /* Mobil menü scrollbar styling */
+  .mobile-menu-container > div::-webkit-scrollbar {
+    width: 6px !important;
+  }
+
+  .mobile-menu-container > div::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  .mobile-menu-container > div::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.5) !important;
+    border-radius: 3px !important;
+  }
+
+  .mobile-menu-container > div::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(148, 163, 184, 0.7) !important;
+  }
+
+  /* Mobil menü linkler - touch friendly */
+  .mobile-menu-container a {
+    display: block !important;
+    min-height: 44px !important;
+    padding: 0.875rem 1rem !important;
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Mobil menü backdrop */
+  .mobile-menu-container + div[class*="backdrop"],
+  div[class*="backdrop"] {
+    position: fixed !important;
+    top: 80px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 40 !important;
+  }
+
+  /* Body scroll kilidi - layout bozmadan */
+  body[style*="overflow: hidden"] {
+    overflow: hidden !important;
+    position: relative !important; /* Fixed değil, relative */
+    width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  html[style*="overflow: hidden"] {
+    overflow: hidden !important;
+  }
+
+  /* Modal ve overlay düzeltmeleri */
+  [class*="modal"],
+  [class*="overlay"],
+  [class*="dialog"] {
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Text overflow ellipsis */
+  [class*="truncate"],
+  [class*="ellipsis"] {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    max-width: 100% !important;
+  }
+
+  /* Background image taşma önleme */
+  [style*="background-image"],
+  [class*="bg-cover"],
+  [class*="bg-center"] {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    max-width: 100% !important;
+  }
+
+  /* Spacing sorunları */
+  [class*="gap-"],
+  [class*="space-"] {
+    gap: clamp(0.5rem, 2vw, 1rem) !important;
+  }
+
+  /* Grid column sorunları - mobilde tek kolon */
+  [class*="grid-cols-12"],
+  [class*="grid-cols-6"],
+  [class*="grid-cols-4"],
+  [class*="grid-cols-3"],
+  [class*="grid-cols-2"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Col-span sorunları - mobilde full width */
+  [class*="col-span-"] {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Flex direction mobilde column (row olanlar için) */
+  [class*="flex-row"]:not([class*="sm:flex-row"]):not([class*="md:flex-row"]):not([class*="lg:flex-row"]) {
+    flex-direction: column !important;
+  }
+
+  /* Width sorunlu değerler */
+  [class*="w-full"],
+  [style*="width"] {
+    max-width: 100% !important;
+  }
+
+  /* Position sticky sorunları */
+  [class*="sticky"] {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  /* Overflow hidden sorunları */
+  [class*="overflow-hidden"] {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+  }
+
+  /* Transform ve translate sorunları */
+  [class*="transform"],
+  [style*="transform"] {
+    max-width: 100% !important;
+  }
+
+  /* Shadow ve border taşma önleme */
+  [class*="shadow"],
+  [class*="border"] {
+    box-sizing: border-box !important;
+  }
+
+  /* Aspect ratio sorunları */
+  [class*="aspect-"],
+  [style*="aspect-ratio"] {
+    max-width: 100% !important;
+  }
+
+  /* Padding sorunları - px-6, px-8 gibi değerler */
+  [class*="px-6"],
+  [class*="px-8"],
+  [class*="px-12"] {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Margin sorunları */
+  [class*="mx-6"],
+  [class*="mx-8"],
+  [class*="mx-12"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Küçük mobil cihazlar için ek düzeltmeler (360px - 414px) */
+@media (max-width: 414px) {
+  /* Daha küçük padding */
+  .container,
+  [class*="container"],
+  main,
+  article,
+  section,
+  div[class*="px-"] {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  /* Font size minimum */
+  body,
+  p,
+  span,
+  div {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Button ve link touch target */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Form input minimum font size (iOS zoom önleme) */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Daha küçük gap değerleri */
+  [class*="gap-"] {
+    gap: 0.75rem !important;
+  }
+}
+
+/* Çok küçük ekranlar (360px ve altı) */
+@media (max-width: 360px) {
+  /* Minimum padding */
+  .container,
+  [class*="container"],
+  main,
+  article,
+  section,
+  div[class*="px-"] {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  /* Font size minimum */
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.125rem !important;
+  }
+
+  /* Daha küçük gap */
+  [class*="gap-"] {
+    gap: 0.5rem !important;
+  }
+}
+
+/* ============================================
+   MOBİL BREADCRUMB DÜZELTMELERİ
+   Breadcrumb'ları mobilde tek satırda, okunabilir ve hiyerarşik göster
+   Kompakt ve ilk içerik paragrafıyla uyumlu
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Breadcrumb container düzeltmeleri - kompakt ama esnek */
+  nav[aria-label="Breadcrumb"],
+  nav[aria-label="Breadcrumb"] ol,
+  nav[aria-label="Breadcrumb"] > * {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE/Edge */
+    line-height: 1.2 !important; /* Sıkı line-height */
+    margin-bottom: 0 !important; /* Alt boşluk kaldır */
+    height: auto !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+
+  /* Scrollbar gizleme (Chrome, Safari) */
+  nav[aria-label="Breadcrumb"]::-webkit-scrollbar,
+  nav[aria-label="Breadcrumb"] ol::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Breadcrumb list items */
+  nav[aria-label="Breadcrumb"] ol li,
+  nav[aria-label="Breadcrumb"] > * {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1.2 !important; /* Sıkı line-height */
+    margin-bottom: 0 !important;
+    height: auto !important;
+  }
+
+  /* Breadcrumb linkler - küçük font */
+  nav[aria-label="Breadcrumb"] a,
+  nav[aria-label="Breadcrumb"] ol li a {
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    font-size: 0.6875rem !important; /* 11px */
+    line-height: 1.2 !important; /* Sıkı line-height */
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  /* Breadcrumb ayraçları (›, /, vb.) - çok küçük ve hafif */
+  nav[aria-label="Breadcrumb"] span[aria-hidden="true"],
+  nav[aria-label="Breadcrumb"] ol li span[aria-hidden="true"],
+  nav[aria-label="Breadcrumb"] > span[aria-hidden="true"] {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-left: 0.25rem !important; /* Çok küçük margin */
+    margin-right: 0.25rem !important; /* Çok küçük margin */
+    font-size: 0.5625rem !important; /* 9px - çok küçük ayraç */
+    line-height: 1 !important; /* Çok sıkı line-height */
+    opacity: 0.5 !important; /* Çok hafif görünüm */
+    padding: 0 !important;
+    height: auto !important;
+  }
+
+  /* Breadcrumb text (span içindeki metin) */
+  nav[aria-label="Breadcrumb"] span:not([aria-hidden="true"]),
+  nav[aria-label="Breadcrumb"] ol li span:not([aria-hidden="true"]) {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 0.6875rem !important; /* 11px */
+    line-height: 1.2 !important; /* Sıkı line-height */
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  /* Breadcrumb gap düzeltmesi - çok küçük */
+  nav[aria-label="Breadcrumb"] ol[class*="gap-"],
+  nav[aria-label="Breadcrumb"][class*="gap-"] {
+    gap: 0.25rem !important; /* Çok küçük gap */
+  }
+
+  /* Breadcrumb container padding - minimal */
+  nav[aria-label="Breadcrumb"] {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 0.25rem !important; /* Çok küçük üst padding */
+    padding-bottom: 0.25rem !important; /* Çok küçük alt padding */
+    margin-bottom: 0 !important; /* Alt margin kaldır */
+    margin-top: 0 !important; /* Üst margin kaldır */
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Breadcrumb section/container padding azalt */
+  section:has(nav[aria-label="Breadcrumb"]),
+  div:has(nav[aria-label="Breadcrumb"]),
+  section > div:has(nav[aria-label="Breadcrumb"]),
+  div > div:has(nav[aria-label="Breadcrumb"]) {
+    padding-top: 0.25rem !important; /* Çok küçük üst padding */
+    padding-bottom: 0.25rem !important; /* Çok küçük alt padding */
+  }
+
+  /* Breadcrumb içindeki container'lar - padding azalt */
+  nav[aria-label="Breadcrumb"] + section,
+  nav[aria-label="Breadcrumb"] + div,
+  nav[aria-label="Breadcrumb"] ~ section,
+  nav[aria-label="Breadcrumb"] ~ div {
+    padding-top: 0.5rem !important; /* İlk içerik ile arasındaki boşluk minimize */
+    margin-top: 0 !important;
+  }
+
+  /* Breadcrumb içindeki max-w container'lar */
+  nav[aria-label="Breadcrumb"] + * > *,
+  nav[aria-label="Breadcrumb"] ~ * > * {
+    padding-top: 0.5rem !important; /* İlk içerik ile arasındaki boşluk minimize */
+  }
+
+  /* Breadcrumb ol element padding */
+  nav[aria-label="Breadcrumb"] ol {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* ============================================
+   MOBİL BUTON DÜZELTMELERİ
+   Tüm butonları mobilde güzel ve kullanışlı hale getir
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Tüm butonlar için temel mobil düzeltmeler */
+  button,
+  a[role="button"],
+  [type="button"],
+  [type="submit"],
+  .btn,
+  [class*="btn"],
+  [class*="button"] {
+    min-height: 44px !important; /* Touch target minimum */
+    min-width: 44px !important; /* Touch target minimum */
+    padding: 0.75rem 1.25rem !important; /* Mobil uyumlu padding */
+    font-size: 0.875rem !important; /* 14px - okunabilir */
+    line-height: 1.5 !important;
+    white-space: normal !important; /* Metin satır atlayabilir */
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important; /* Mobilde full width */
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Buton içindeki metin */
+  button *,
+  a[role="button"] *,
+  [type="button"] *,
+  [type="submit"] *,
+  .btn *,
+  [class*="btn"] * {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Buton grupları - mobilde dikey */
+  .flex.flex-row button,
+  .flex.flex-row a[role="button"],
+  .flex.flex-row [type="button"],
+  .flex.flex-row [type="submit"],
+  [class*="flex-row"] button,
+  [class*="flex-row"] a[role="button"] {
+    width: 100% !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Buton grupları - gap düzeltmesi */
+  .flex.gap-4 button,
+  .flex.gap-4 a[role="button"],
+  [class*="gap-"] button,
+  [class*="gap-"] a[role="button"] {
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Buton içindeki icon'lar */
+  button svg,
+  a[role="button"] svg,
+  [type="button"] svg,
+  [type="submit"] svg,
+  .btn svg {
+    flex-shrink: 0 !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    margin-right: 0.5rem !important;
+  }
+
+  /* Gradient butonlar */
+  [class*="bg-gradient"],
+  [style*="gradient"] {
+    background-size: 100% 100% !important;
+    background-position: center !important;
+  }
+
+  /* Rounded butonlar */
+  [class*="rounded-full"],
+  [class*="rounded-lg"],
+  [class*="rounded-md"] {
+    border-radius: 0.5rem !important; /* Mobilde tam yuvarlak yerine köşeli */
+  }
+
+  /* Küçük butonlar - mobilde normal boyut */
+  button[class*="text-xs"],
+  a[class*="text-xs"],
+  [class*="btn-sm"],
+  [class*="button-sm"] {
+    font-size: 0.875rem !important; /* 14px */
+    padding: 0.75rem 1.25rem !important;
+    min-height: 44px !important;
+  }
+
+  /* Büyük butonlar - mobilde normal boyut */
+  button[class*="text-lg"],
+  a[class*="text-lg"],
+  [class*="btn-lg"],
+  [class*="button-lg"] {
+    font-size: 1rem !important; /* 16px */
+    padding: 0.875rem 1.5rem !important;
+    min-height: 48px !important;
+  }
+
+  /* Disabled butonlar */
+  button:disabled,
+  [type="button"]:disabled,
+  [type="submit"]:disabled,
+  [class*="disabled"] {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+  }
+
+  /* Focus states - mobilde daha belirgin */
+  button:focus,
+  a[role="button"]:focus,
+  [type="button"]:focus,
+  [type="submit"]:focus {
+    outline: 2px solid currentColor !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* Küçük mobil cihazlar için buton düzeltmeleri (360px - 414px) */
+@media (max-width: 414px) {
+  /* Buton padding küçült */
+  button,
+  a[role="button"],
+  [type="button"],
+  [type="submit"],
+  .btn,
+  [class*="btn"] {
+    padding: 0.625rem 1rem !important;
+    font-size: 0.8125rem !important; /* 13px */
+    min-height: 44px !important;
+  }
+
+  /* Buton icon'ları küçült */
+  button svg,
+  a[role="button"] svg,
+  [type="button"] svg,
+  [type="submit"] svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    margin-right: 0.375rem !important;
+  }
+}
+
+/* Küçük mobil cihazlar için breadcrumb düzeltmeleri (360px - 414px) */
+@media (max-width: 414px) {
+  /* Breadcrumb font size minimum */
+  nav[aria-label="Breadcrumb"] a,
+  nav[aria-label="Breadcrumb"] ol li a,
+  nav[aria-label="Breadcrumb"] span:not([aria-hidden="true"]),
+  nav[aria-label="Breadcrumb"] ol li span:not([aria-hidden="true"]) {
+    font-size: 0.5625rem !important; /* 9px - minimum */
+    line-height: 1 !important; /* Çok sıkı */
+  }
+
+  /* Breadcrumb ayraçları minimum */
+  nav[aria-label="Breadcrumb"] span[aria-hidden="true"],
+  nav[aria-label="Breadcrumb"] ol li span[aria-hidden="true"] {
+    font-size: 0.5rem !important; /* 8px - minimum ayraç */
+    margin-left: 0.125rem !important; /* Minimum margin */
+    margin-right: 0.125rem !important; /* Minimum margin */
+    opacity: 0.4 !important; /* Çok hafif */
+  }
+
+  /* Breadcrumb gap minimum */
+  nav[aria-label="Breadcrumb"] ol[class*="gap-"],
+  nav[aria-label="Breadcrumb"][class*="gap-"] {
+    gap: 0.125rem !important; /* Minimum gap */
+  }
+
+  /* Breadcrumb container padding minimum */
+  nav[aria-label="Breadcrumb"] {
+    padding-top: 0.125rem !important; /* Minimum üst padding */
+    padding-bottom: 0.125rem !important; /* Minimum alt padding */
+  }
+
+  /* İlk içerik ile arasındaki boşluk minimum */
+  nav[aria-label="Breadcrumb"] + section,
+  nav[aria-label="Breadcrumb"] + div,
+  nav[aria-label="Breadcrumb"] ~ section,
+  nav[aria-label="Breadcrumb"] ~ div {
+    padding-top: 0.375rem !important; /* Minimum boşluk */
+  }
+}
+
+/* ============================================
+   MALTA DİL OKULU FİYATLARI SAYFASI - MOBİL SECTION DÜZENLEMELERİ
+   Section'ların header altında kalması ve üst üste binmemesi için
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Tüm section'lar - header altında, düzgün sıralama */
+  main.pt-20 > section {
+    position: relative !important;
+    z-index: 1 !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    translate: none !important;
+    filter: none !important;
+    will-change: auto !important;
+    isolation: auto !important;
+    overflow: visible !important;
+    overflow-x: hidden !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Section içindeki header ve h2 - net görünürlük */
+  main.pt-20 > section header,
+  main.pt-20 > section h2 {
+    position: relative !important;
+    z-index: 2 !important;
+    color: rgb(15, 23, 42) !important; /* slate-900 */
+    background: transparent !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    margin-top: 0 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Section içindeki paragraflar - net görünürlük */
+  main.pt-20 > section p {
+    position: relative !important;
+    z-index: 2 !important;
+    color: rgb(51, 65, 85) !important; /* slate-700 */
+    background: transparent !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Section içindeki grid ve container'lar */
+  main.pt-20 > section > div {
+    position: relative !important;
+    z-index: 1 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  /* Özel section'lar için - odeme-rehberi */
+  main.pt-20 > section#odeme-rehberi,
+  main.pt-20 > section[id="odeme-rehberi"] {
+    position: relative !important;
+    z-index: 1 !important;
+    top: auto !important;
+    margin-top: 0 !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Özel section'lar için - odeme-takvimi */
+  main.pt-20 > section#odeme-takvimi,
+  main.pt-20 > section[id="odeme-takvimi"] {
+    position: relative !important;
+    z-index: 1 !important;
+    top: auto !important;
+    margin-top: 0 !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Tüm article ve card elementleri */
+  main.pt-20 > section article,
+  main.pt-20 > section [class*="card"],
+  main.pt-20 > section [class*="rounded"] {
+    position: relative !important;
+    z-index: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* Overlay ve backdrop'ları kaldır */
+  main.pt-20 > section::before,
+  main.pt-20 > section::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* TÜM SAYFALAR İÇİN GENEL SECTION DÜZENLEMELERİ */
+  /* Tüm main içindeki section'lar - header altında, düzgün sıralama */
+  main > section {
+    position: relative !important;
+    z-index: 1 !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    translate: none !important;
+    filter: none !important;
+    will-change: auto !important;
+    isolation: auto !important;
+    overflow: visible !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Section içindeki başlıklar ve metinler - net görünürlük */
+  main > section h1,
+  main > section h2,
+  main > section h3,
+  main > section header {
+    position: relative !important;
+    z-index: 2 !important;
+    color: rgb(15, 23, 42) !important; /* slate-900 */
+    background: transparent !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+
+  main > section p {
+    position: relative !important;
+    z-index: 2 !important;
+    color: rgb(51, 65, 85) !important; /* slate-700 */
+    background: transparent !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+
+  /* Section container'ları */
+  main > section > div {
+    position: relative !important;
+    z-index: 1 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+}
+
+
+/* Mobile Menu Button Styles - Ant Design (Özel) */
+/* Desktop'ta kesinlikle gizli */
+@media (min-width: 640px) {
+  header nav .ant-btn[aria-label="Toggle menu"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+}
+
+/* Mobilde görünür */
+@media (max-width: 639px) {
+  header nav .ant-btn[aria-label="Toggle menu"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    border-radius: 6px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #1e293b !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin-left: 0.5rem !important;
+    flex-shrink: 0 !important;
+    z-index: 101 !important;
+    position: relative !important;
+  }
+
+  header nav .ant-btn[aria-label="Toggle menu"]:hover {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+  }
+
+  header nav .ant-btn[aria-label="Toggle menu"] svg {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 24px !important;
+    height: 24px !important;
+    color: inherit !important;
+    stroke: currentColor !important;
+    fill: none !important;
+  }
+}
+
+/* Ant Design Drawer Header Title */
+.ant-drawer-header-title {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+/* Ant Design Drawer Close Button */
+.ant-drawer-close {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+/* Desktop Menu Styles */
+header nav nav.hidden.sm\:flex {
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  header nav nav.hidden.sm\:flex {
+    display: flex !important;
+  }
+
+  header nav nav.hidden.sm\:flex a {
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  header nav nav.hidden.sm\:flex a:hover {
+    text-decoration: none;
+  }
+}
+
+/* ============================================
+   BLOG SAYFASI MOBİL DÜZELTMELERİ
+   Container'ların üst üste gelmesini önler
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Blog sayfası ana container */
+  main.bg-slate-50 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    position: relative !important;
+    z-index: 1 !important; /* Blog Hero'dan altta */
+  }
+
+  /* Blog container max-width düzeltmesi */
+  main.bg-slate-50 > div.mx-auto.max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Blog grid düzeltmesi */
+  main.bg-slate-50 .grid.grid-cols-1.lg\:grid-cols-4 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Blog posts grid container */
+  main.bg-slate-50 .lg\:col-span-3 {
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 1 !important;
+  }
+
+  /* Sidebar container */
+  main.bg-slate-50 .lg\:col-span-1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 2 !important;
+  }
+
+  /* Blog Hero section */
+  header.bg-gradient-to-br {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    position: relative !important;
+    z-index: 10 !important; /* Üstte görünmesi için yüksek z-index */
+    overflow: visible !important;
+    background: linear-gradient(to bottom right, #f8fafc, #eff6ff) !important; /* Gradient korunmalı */
+  }
+
+  header.bg-gradient-to-br > div.mx-auto.max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    position: relative !important;
+    z-index: 11 !important; /* Container içeriği de üstte */
+  }
+
+  /* Blog Hero - Title & Description Container */
+  header.bg-gradient-to-br > div > div.text-center {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+    order: 1 !important;
+    padding: 0 !important;
+  }
+
+  header.bg-gradient-to-br > div > div.text-center h1 {
+    font-size: 1.875rem !important; /* text-3xl */
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+    padding: 0 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  header.bg-gradient-to-br > div > div.text-center p {
+    font-size: 1rem !important; /* text-base */
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Blog Hero - Search Bar Container */
+  header.bg-gradient-to-br > div > div.max-w-2xl {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+    order: 2 !important;
+    padding: 0 !important;
+  }
+
+  /* Blog Hero - Category Chips & Sort Container */
+  header.bg-gradient-to-br > div > div.flex.flex-col.sm\:flex-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    order: 3 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+
+  /* Category Chips Container */
+  header.bg-gradient-to-br > div > div.flex.flex-col.sm\:flex-row > div.flex.flex-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Sort Dropdown Container */
+  header.bg-gradient-to-br > div > div.flex.flex-col.sm\:flex-row > div.relative {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  header.bg-gradient-to-br > div > div.flex.flex-col.sm\:flex-row > div.relative > select {
+    width: 100% !important;
+    max-width: 200px !important;
+  }
+
+  /* Featured Posts section */
+  section.bg-white.py-12,
+  section.bg-white.py-12.md\:py-16 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 1 !important; /* Blog Hero'dan altta */
+  }
+
+  section.bg-white > div.mx-auto.max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  section.bg-white .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  section.bg-white .md\:col-span-2.lg\:col-span-2 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  section.bg-white .flex.flex-col.gap-6 {
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 1rem !important;
+  }
+
+  /* Breadcrumb container */
+  nav[aria-label="Breadcrumb"].bg-white {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  nav[aria-label="Breadcrumb"] > div.mx-auto.max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Blog sidebar mobile CTA */
+  .lg\:hidden.bg-gradient-to-br {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Blog grid cards */
+  [class*="BlogGrid"] > div,
+  [class*="blog-grid"] > div,
+  div.grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+    max-width: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  /* Blog card items */
+  div.grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Tüm blog sayfası container'ları */
+  main.bg-slate-50 * {
+    box-sizing: border-box !important;
+  }
+
+  /* Blog sayfası section'ları */
+  main.bg-slate-50 > * {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+}
