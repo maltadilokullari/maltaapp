@@ -1,0 +1,390 @@
+.iletisim-main {
+  width: 100%;
+}
+
+.iletisim-hero {
+  background-color: white;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 3rem 0;
+}
+
+.iletisim-container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .iletisim-container {
+    padding: 0 2rem;
+  }
+}
+
+.iletisim-breadcrumb {
+  margin-bottom: 1.5rem;
+}
+
+.iletisim-breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #64748b;
+  list-style: none;
+}
+
+.iletisim-breadcrumb-list a {
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.iletisim-breadcrumb-list a:hover {
+  color: #1e293b;
+  text-decoration: underline;
+}
+
+.iletisim-hero-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .iletisim-hero-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.iletisim-hero-text {
+  order: 2;
+}
+
+@media (min-width: 1024px) {
+  .iletisim-hero-text {
+    order: 1;
+  }
+}
+
+.iletisim-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .iletisim-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .iletisim-title {
+    font-size: 3rem;
+  }
+}
+
+.iletisim-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .iletisim-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.iletisim-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.iletisim-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .iletisim-cta {
+    flex-direction: row;
+  }
+}
+
+.iletisim-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.iletisim-button-primary {
+  background-color: #1e293b;
+  color: white;
+}
+
+.iletisim-button-primary:hover {
+  background-color: #0f172a;
+}
+
+.iletisim-button-whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.iletisim-button-whatsapp:hover {
+  background-color: #20BA5A;
+}
+
+.iletisim-update {
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.iletisim-update p {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.iletisim-update time {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.iletisim-form-wrapper {
+  order: 1;
+  position: sticky;
+  top: 100px;
+}
+
+@media (min-width: 1024px) {
+  .iletisim-form-wrapper {
+    order: 2;
+  }
+}
+
+.iletisim-form-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+  .iletisim-form-card {
+    padding: 2rem;
+  }
+}
+
+.iletisim-form-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.iletisim-form-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.iletisim-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.iletisim-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.iletisim-form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.iletisim-form-input {
+  height: 44px;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+  background: white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.iletisim-form-input:focus {
+  outline: none;
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 4px rgba(148, 163, 188, 0.1);
+}
+
+.iletisim-form-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.iletisim-form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #475569;
+  cursor: pointer;
+}
+
+.iletisim-form-checkbox input {
+  margin-top: 0.25rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 0.25rem;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+}
+
+.iletisim-form-message {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.iletisim-form-message.success {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.iletisim-form-message.error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.iletisim-form-button {
+  height: 48px;
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: #000000;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 0.25rem;
+}
+
+.iletisim-form-button:hover:not(:disabled) {
+  background-color: #1e293b;
+}
+
+.iletisim-form-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.iletisim-contact-info {
+  padding: 3rem 0;
+  background-color: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.iletisim-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .iletisim-section-title {
+    font-size: 2.5rem;
+  }
+}
+
+.iletisim-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .iletisim-contact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.iletisim-contact-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.iletisim-contact-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.iletisim-contact-phone {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.iletisim-contact-phone:hover {
+  color: #475569;
+}
+
+.iletisim-contact-email {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  word-break: break-all;
+  transition: color 0.2s ease;
+}
+
+.iletisim-contact-email:hover {
+  color: #475569;
+}
+
+.iletisim-contact-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: auto;
+}

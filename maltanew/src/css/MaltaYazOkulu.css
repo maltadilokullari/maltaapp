@@ -1,0 +1,22 @@
+.malta-yaz-okulu-main {
+  padding: 2rem 0;
+  min-height: 60vh;
+}
+
+.malta-yaz-okulu-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.malta-yaz-okulu-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.malta-yaz-okulu-description {
+  font-size: 1.125rem;
+  color: #64748b;
+}

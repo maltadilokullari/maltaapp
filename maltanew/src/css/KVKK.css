@@ -1,0 +1,65 @@
+.kvkk-main {
+  padding: 2rem 0;
+  min-height: 60vh;
+  background-color: #f8fafc;
+}
+
+.kvkk-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.kvkk-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.kvkk-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.kvkk-update {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.kvkk-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.kvkk-section {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.kvkk-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.kvkk-section-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 0.75rem;
+}
+
+.kvkk-section-text strong {
+  font-weight: 600;
+  color: #1e293b;
+}
